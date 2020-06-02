@@ -10,14 +10,14 @@ import java.io.PrintWriter;
 @WebServlet(name = "ProductServlet",urlPatterns ="/Product")
 public class ProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//String Description= String.format(request.getHeader("Product Description"));
+String Description= request.getParameter("Product Description");
 float Price =Float.parseFloat(request.getParameter("List Price"));
 float Percent =Float.parseFloat(request.getParameter("Discount Percent"));
 float Amount= (float) (Price *  Percent * 0.01);
 float DiscountPrice=(float) (Amount*Percent);
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
-//        writer.println("<h1>Price: " +Description+ "</h1>");
+        writer.println("<h1>Price: " +Description+ "</h1>");
         writer.println("<h1>Price: " +Price+ "</h1>");
         writer.println("<h1>Percent: " + Percent+ "</h1>");
         writer.println("<h1>Discount Amount: " + Amount+ "</h1>");
